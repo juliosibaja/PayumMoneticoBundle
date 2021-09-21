@@ -1,5 +1,5 @@
 {
-    "name" : "ekyna/payum-monetico-bundle",
+    "name" : "juliosibaja/payum-monetico-bundle",
     "description" : "Symfony Bundle for Payum Monetico (Credit Mutuel/CIC) gateway",
     "type" : "bundle",
     "authors" : [
@@ -17,7 +17,7 @@
         "symfony",
         "bundle"
     ],
-    "homepage" : "https://github.com/ekyna/PayumMoneticoBundle",
+    "homepage" : "https://github.com/juliosibaja/PayumMoneticoBundle",
     "license" : "MIT",
     "require" : {
         "php" : "^7.0",
