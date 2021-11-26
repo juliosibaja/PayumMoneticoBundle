@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection;
+namespace Codatte\Bundle\PayumMoneticoBundle\DependencyInjection;
 
 use Ekyna\Component\Payum\Monetico\Api\Api;
 use PHPUnit\Framework\TestCase;
@@ -8,8 +8,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Class EkynaPayumMoneticoExtensionTest
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class EkynaPayumMoneticoExtensionTest extends TestCase
 {
@@ -24,18 +24,18 @@ class EkynaPayumMoneticoExtensionTest extends TestCase
         ];
 
         /** @var \PHPUnit_Framework_MockObject_MockObject|ContainerBuilder $container */
-        $container = $this
-            ->getMockBuilder(ContainerBuilder::class)
-            ->getMock();
+        $container = $this->createMock(ContainerBuilder::class);
+            // ->getMockBuilder(ContainerBuilder::class)
+            // ->getMock();
 
         $container
-            ->expects($this->at(0))
+            ->expects($this->exactly(0))
             ->method('setParameter')
-            ->with('ekyna_payum_monetico.api_config', $expectedApiConfig);
+            ->with('payum_monetico.api_config_1', [$expectedApiConfig,]);
 
         $extension = new EkynaPayumMoneticoExtension();
         $extension->load([
-            'ekyna_payum_monetico' => [
+            'payum_monetico' => [
                 'api' => $expectedApiConfig,
             ],
         ], $container);

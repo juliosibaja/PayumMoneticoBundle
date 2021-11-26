@@ -1,15 +1,15 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle;
+namespace Codatte\Bundle\PayumMoneticoBundle;
 
-use Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection\Compiler\RegisterGatewayPass;
+use Codatte\Bundle\PayumMoneticoBundle\DependencyInjection\Compiler\RegisterGatewayPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class EkynaPayumMoneticoBundle
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class EkynaPayumMoneticoBundle extends Bundle
 {

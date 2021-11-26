@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection;
+namespace Codatte\Bundle\PayumMoneticoBundle\DependencyInjection;
 
 use Ekyna\Component\Payum\Monetico\Api\Api;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -10,8 +10,8 @@ use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Class Configuration
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte Team <devteam@codatte.fr>
  */
 class Configuration implements ConfigurationInterface
 {
@@ -21,11 +21,11 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         if (version_compare(Kernel::VERSION, '4.0.0') >= 0 ) {
-            $treeBuilder = new TreeBuilder('ekyna_payum_monetico');
+            $treeBuilder = new TreeBuilder('payum_monetico');
             $root = $treeBuilder->getRootNode();
         } else {
             $treeBuilder = new TreeBuilder();
-            $root = $treeBuilder->root('ekyna_payum_monetico');
+            $root = $treeBuilder->root('payum_monetico');
         }
 
         $this->addApiSection($root);
@@ -43,26 +43,28 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('api')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->enumNode('mode')
-                            ->isRequired()
-                            ->values([Api::MODE_TEST, Api::MODE_PRODUCTION])
-                        ->end()
-                        ->scalarNode('tpe')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->scalarNode('key')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->scalarNode('company')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->booleanNode('debug')
-                            ->defaultValue('%kernel.debug%')
+                    ->requiresAtLeastOneElement()
+                    ->prototype('array')
+                        ->children()
+                            ->enumNode('mode')
+                                ->isRequired()
+                                ->values([Api::MODE_TEST, Api::MODE_PRODUCTION])
+                            ->end()
+                            ->scalarNode('tpe')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('key')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('company')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->booleanNode('debug')
+                                ->defaultValue('%kernel.debug%')
+                            ->end()
                         ->end()
                     ->end()
                 ->end()

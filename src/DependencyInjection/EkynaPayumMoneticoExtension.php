@@ -1,13 +1,13 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection;
+namespace Codatte\Bundle\PayumMoneticoBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * Class EkynaPayumMoneticoExtension
- * @package Ekyna\Bundle\PayumMoneticoBundle
+ * @package Codatte\Bundle\PayumMoneticoBundle
  * @author  Etienne Dauvergne <contact@ekyna.com>
  */
 class EkynaPayumMoneticoExtension extends Extension
@@ -21,6 +21,7 @@ class EkynaPayumMoneticoExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         // Api Config
-        $container->setParameter('ekyna_payum_monetico.api_config', $config['api']);
+        $container->setParameter('payum_monetico.api_config_1', $config['api'][0]);
+        $container->setParameter('payum_monetico.api_config_2', $config['api'][1]);
     }
 }

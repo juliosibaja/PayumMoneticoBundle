@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action;
+namespace Codatte\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action;
 
 use Ekyna\Component\Commerce\Bridge\Payum\Request\GetHumanStatus;
 use Payum\Core\Action\ActionInterface;
@@ -12,8 +12,8 @@ use Payum\Core\Request\Cancel;
 
 /**
  * Class CancelAction
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class CancelAction implements ActionInterface, GatewayAwareInterface
 {

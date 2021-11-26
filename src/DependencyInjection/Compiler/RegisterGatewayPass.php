@@ -1,10 +1,10 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection\Compiler;
+namespace Codatte\Bundle\PayumMoneticoBundle\DependencyInjection\Compiler;
 
-use Ekyna\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action\CancelAction;
-use Ekyna\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action\ConvertAction;
-use Ekyna\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action\RefundAction;
+use Codatte\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action\CancelAction;
+use Codatte\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action\ConvertAction;
+use Codatte\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action\RefundAction;
 use Ekyna\Component\Payum\Monetico\MoneticoGatewayFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -13,8 +13,8 @@ use Symfony\Component\DependencyInjection\Definition;
 
 /**
  * Class RegisterGatewayPass
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class RegisterGatewayPass implements CompilerPassInterface
 {
@@ -39,8 +39,10 @@ class RegisterGatewayPass implements CompilerPassInterface
     private function registerFactory(ContainerBuilder $container)
     {
         $payumBuilder = $container->getDefinition('payum.builder');
-        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico', new Parameter('ekyna_payum_monetico.api_config')]);
-        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico', [MoneticoGatewayFactory::class, 'build']]);
+        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico1', new Parameter('payum_monetico.api_config_1')]);
+        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico1', [MoneticoGatewayFactory::class, 'build']]);
+        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico2', new Parameter('payum_monetico.api_config_2')]);
+        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico2', [MoneticoGatewayFactory::class, 'build']]);
     }
 
     /**
@@ -57,17 +59,20 @@ class RegisterGatewayPass implements CompilerPassInterface
 
         // Commerce convert payment action
         $definition = new Definition(ConvertAction::class);
-        $definition->addTag('payum.action', ['factory' => 'monetico', 'prepend' => true]);
+        $definition->addTag('payum.action', ['factory' => 'monetico1', 'prepend' => true]);
+        $definition->addTag('payum.action', ['factory' => 'monetico2', 'prepend' => true]);
         $container->setDefinition('ekyna_commerce.payum.action.monetico.convert_payment', $definition);
 
         // Commerce cancel payment action
         $definition = new Definition(CancelAction::class);
-        $definition->addTag('payum.action', ['factory' => 'monetico']);
+        $definition->addTag('payum.action', ['factory' => 'monetico1']);
+        $definition->addTag('payum.action', ['factory' => 'monetico2']);
         $container->setDefinition('ekyna_commerce.payum.action.monetico.cancel', $definition);
 
         // Commerce refund payment action
         $definition = new Definition(RefundAction::class);
-        $definition->addTag('payum.action', ['factory' => 'monetico']);
+        $definition->addTag('payum.action', ['factory' => 'monetico1']);
+        $definition->addTag('payum.action', ['factory' => 'monetico2']);
         $container->setDefinition('ekyna_commerce.payum.action.monetico.refund', $definition);
     }
 }

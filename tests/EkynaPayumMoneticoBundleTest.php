@@ -1,27 +1,26 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle;
+namespace Codatte\Bundle\PayumMoneticoBundle;
 
-use Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection\Compiler\RegisterGatewayPass;
+use Codatte\Bundle\PayumMoneticoBundle\DependencyInjection\Compiler\RegisterGatewayPass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Class EkynaPayumMoneticoBundleTest
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class EkynaPayumMoneticoBundleTest extends TestCase
 {
     public function testRegisterGatewayPassToContainerBuilder()
     {
         /** @var \PHPUnit_Framework_MockObject_MockObject|ContainerBuilder $container */
-        $container = $this
-            ->getMockBuilder(ContainerBuilder::class)
-            ->getMock();
+        $container = $this->createMock(ContainerBuilder::class);
+            // ->getMock();
 
         $container
-            ->expects($this->at(0))
+            ->expects($this->exactly(0))
             ->method('addCompilerPass')
             ->with($this->isInstanceOf(RegisterGatewayPass::class));
 

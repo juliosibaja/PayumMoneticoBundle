@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Ekyna\Bundle\PayumMoneticoBundle\EkynaPayumMoneticoBundle;
+use Codatte\Bundle\PayumMoneticoBundle\EkynaPayumMoneticoBundle;
 use Payum\Bundle\PayumBundle\PayumBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;

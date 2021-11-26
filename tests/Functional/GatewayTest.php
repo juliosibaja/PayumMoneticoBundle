@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\Functional;
+namespace Codatte\Bundle\PayumMoneticoBundle\Functional;
 
 use Payum\Core\GatewayInterface;
 use Payum\Core\Model\Payment;

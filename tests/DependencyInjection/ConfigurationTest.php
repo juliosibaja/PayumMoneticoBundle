@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\DependencyInjection;
+namespace Codatte\Bundle\PayumMoneticoBundle\DependencyInjection;
 
 use Ekyna\Component\Payum\Monetico\Api\Api;
 use PHPUnit\Framework\TestCase;
@@ -9,8 +9,8 @@ use Symfony\Component\Config\Definition\Processor;
 
 /**
  * Class ConfigurationTest
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class ConfigurationTest extends TestCase
 {
@@ -24,13 +24,13 @@ class ConfigurationTest extends TestCase
      */
     private $processor;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->configuration = new Configuration();
         $this->processor = new Processor();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->configuration = null;
         $this->processor = null;
@@ -44,8 +44,8 @@ class ConfigurationTest extends TestCase
     public function testValidApiConfig(array $config)
     {
         $this->processor->processConfiguration($this->configuration, [
-            'ekyna_payum_monetico' => [
-                'api' => $config,
+            'payum_monetico' => [
+                'api' => [$config,],
             ],
         ]);
     }
@@ -60,8 +60,8 @@ class ConfigurationTest extends TestCase
         $this->expectException(Exception::class);
 
         $this->processor->processConfiguration($this->configuration, [
-            'ekyna_payum_monetico' => [
-                'api' => $config,
+            'payum_monetico' => [
+                'api' => [$config,],
             ],
         ]);
     }

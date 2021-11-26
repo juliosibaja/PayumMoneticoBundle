@@ -5,7 +5,11 @@
     "authors" : [
         {
             "name" : "Etienne Dauvergne",
-            "homepage" : "http://ekyna.com"
+            "homepage" : "https://ekyna.com"
+        },
+        {
+            "name" : "Codatte DevTeam",
+            "homepage" : "https://codatte.fr"
         }
     ],
     "keywords": [

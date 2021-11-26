@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekyna\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action;
+namespace Codatte\Bundle\PayumMoneticoBundle\Bridge\Commerce\Action;
 
 use Ekyna\Component\Commerce\Payment\Model\PaymentInterface;
 use Payum\Core\Action\ActionInterface;
@@ -13,8 +13,8 @@ use Payum\Core\Request\GetCurrency;
 
 /**
  * Class CommerceConvertAction
- * @package Ekyna\Bundle\PayumMoneticoBundle
- * @author  Etienne Dauvergne <contact@ekyna.com>
+ * @package Codatte\Bundle\PayumMoneticoBundle
+ * @author  Etienne Dauvergne <contact@ekyna.com> and Codatte <devteam@codatte.fr>
  */
 class ConvertAction implements ActionInterface, GatewayAwareInterface
 {
