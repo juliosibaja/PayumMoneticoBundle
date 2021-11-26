@@ -16,7 +16,7 @@ public function registerBundles()
 {
     $bundles = [
         // ...
-        new \Ekyna\Bundle\PayumMoneticoBundle\EkynaPayumMoneticoBundle(),
+        new \Codatte\Bundle\PayumMoneticoBundle\EkynaPayumMoneticoBundle(),
     ];
     
     // ...

@@ -14,7 +14,7 @@ Add the bundle to the kernel:
 // config/bundles.php
 return [
     // ...
-    Ekyna\Bundle\PayumMoneticoBundle\EkynaPayumMoneticoBundle::class => ['all' => true],
+    Codatte\Bundle\PayumMoneticoBundle\EkynaPayumMoneticoBundle::class => ['all' => true],
 ];
 ```
 
