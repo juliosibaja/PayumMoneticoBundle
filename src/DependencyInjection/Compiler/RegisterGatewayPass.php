@@ -26,7 +26,6 @@ class RegisterGatewayPass implements CompilerPassInterface
         if (!$container->hasDefinition('payum.builder')) {
             return;
         }
-
         $this->registerFactory($container);
         $this->registerActions($container);
     }
@@ -39,10 +38,10 @@ class RegisterGatewayPass implements CompilerPassInterface
     private function registerFactory(ContainerBuilder $container)
     {
         $payumBuilder = $container->getDefinition('payum.builder');
-        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico1', new Parameter('payum_monetico.api_config_1')]);
-        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico1', [MoneticoGatewayFactory::class, 'build']]);
-        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico2', new Parameter('payum_monetico.api_config_2')]);
-        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico2', [MoneticoGatewayFactory::class, 'build']]);
+        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico_1', new Parameter('payum_monetico.api_config_1')]);
+        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico_1', [MoneticoGatewayFactory::class, 'build']]);
+        $payumBuilder->addMethodCall('addGatewayFactoryConfig', ['monetico_2', new Parameter('payum_monetico.api_config_2')]);
+        $payumBuilder->addMethodCall('addGatewayFactory', ['monetico_2', [MoneticoGatewayFactory::class, 'build']]);
     }
 
     /**
@@ -59,20 +58,20 @@ class RegisterGatewayPass implements CompilerPassInterface
 
         // Commerce convert payment action
         $definition = new Definition(ConvertAction::class);
-        $definition->addTag('payum.action', ['factory' => 'monetico1', 'prepend' => true]);
-        $definition->addTag('payum.action', ['factory' => 'monetico2', 'prepend' => true]);
+        $definition->addTag('payum.action', ['factory' => 'monetico_1', 'prepend' => true]);
+        $definition->addTag('payum.action', ['factory' => 'monetico_2', 'prepend' => true]);
         $container->setDefinition('ekyna_commerce.payum.action.monetico.convert_payment', $definition);
 
         // Commerce cancel payment action
         $definition = new Definition(CancelAction::class);
-        $definition->addTag('payum.action', ['factory' => 'monetico1']);
-        $definition->addTag('payum.action', ['factory' => 'monetico2']);
+        $definition->addTag('payum.action', ['factory' => 'monetico_1']);
+        $definition->addTag('payum.action', ['factory' => 'monetico_2']);
         $container->setDefinition('ekyna_commerce.payum.action.monetico.cancel', $definition);
 
         // Commerce refund payment action
         $definition = new Definition(RefundAction::class);
-        $definition->addTag('payum.action', ['factory' => 'monetico1']);
-        $definition->addTag('payum.action', ['factory' => 'monetico2']);
+        $definition->addTag('payum.action', ['factory' => 'monetico_1']);
+        $definition->addTag('payum.action', ['factory' => 'monetico_2']);
         $container->setDefinition('ekyna_commerce.payum.action.monetico.refund', $definition);
     }
 }

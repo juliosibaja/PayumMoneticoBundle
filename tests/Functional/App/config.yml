@@ -10,13 +10,25 @@ payum:
                     id_property: hash
                     storage_dir: '%kernel.cache_dir%'
 
+    # If DB storage desired:
+    # storages:
+    #     App\Entity\Paiement: { doctrine: orm }
+
     gateways:
-        monetico:
-            factory: monetico1
+        monetico_1:
+            factory: monetico_1
+        monetico_2:
+            factory: monetico_2
 
 payum_monetico:
     api:
-        monetico1:
+        monetico_1:
+            mode: TEST
+            tpe: '1324567890'
+            key: '1234567890'
+            company: foobar
+            debug: true
+        monetico_2:
             mode: TEST
             tpe: '1324567890'
             key: '1234567890'
@@ -27,4 +39,5 @@ services:
     App\Action\ConvertAction:
         public: true
         tags:
-            - { name: payum.action, factory: monetico1 }
+            - { name: payum.action, factory: monetico_1 }
+            - { name: payum.action, factory: monetico_2 }

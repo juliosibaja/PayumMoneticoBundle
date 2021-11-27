@@ -80,7 +80,7 @@ class ConfigurationTest extends TestCase
                 'mode'    => Api::MODE_TEST,
                 'tpe'     => 'abc_def_ghi',
                 'key'     => '1234567890',
-                'company' => 'Ekyna',
+                'company' => 'Codatte',
                 'debug'   => false,
             ]],
             [[

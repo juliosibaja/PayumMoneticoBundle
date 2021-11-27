@@ -39,8 +39,8 @@ class RegisterGatewayPassTest extends TestCase
         // ->expects($this->exactly(1))
         ->method('addMethodCall')
         ->withConsecutive(
-            ['addGatewayFactoryConfig', ['monetico1', new Parameter('payum_monetico.api_config_1')]],
-            ['addGatewayFactory', ['monetico1', [MoneticoGatewayFactory::class, 'build']]]
+            ['addGatewayFactoryConfig', ['monetico_1', new Parameter('payum_monetico.api_config_1')]],
+            ['addGatewayFactory', ['monetico_1', [MoneticoGatewayFactory::class, 'build']]]
         );
 
 
