@@ -6,17 +6,12 @@ See [this example](https://github.com/ekyna/PayumMonetico/blob/master/tests/Func
 
 Register your action as a service:
 
-```xml
-    <service id="App\Payum\Action\ConvertAction" public="true">
-        <tag name="payum.action" factory="monetico"/>
-    </service>
-```
-or
 ```yaml
-    App\Payum\Action\ConvertAction:
+    App\Payum\Action\ConvertPaymentAction:
         public: true
         tags:
-            - { name: payum.action, factory: monetico }
+            - { name: payum.action, factory: monetico_1 }
+            - { name: payum.action, factory: monetico_2 }
 ```
 
 ### Create your notify controller

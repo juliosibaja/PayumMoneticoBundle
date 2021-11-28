@@ -45,7 +45,7 @@ class ConfigurationTest extends TestCase
     {
         $this->processor->processConfiguration($this->configuration, [
             'payum_monetico' => [
-                'api' => [$config,],
+                'monetico_1' => $config,
             ],
         ]);
     }
@@ -61,7 +61,7 @@ class ConfigurationTest extends TestCase
 
         $this->processor->processConfiguration($this->configuration, [
             'payum_monetico' => [
-                'api' => [$config,],
+                'monetico_1' => $config,
             ],
         ]);
     }

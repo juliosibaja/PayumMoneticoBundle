@@ -19,9 +19,8 @@ class EkynaPayumMoneticoExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
         // Api Config
-        $container->setParameter('payum_monetico.api_config_1', $config['api']['monetico_1']);
-        $container->setParameter('payum_monetico.api_config_2', $config['api']['monetico_2']);
+        $container->setParameter('payum_monetico.api_config_1', $config[0]);
+        $container->setParameter('payum_monetico.api_config_2', $config[1]);
     }
 }
