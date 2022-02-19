@@ -14,6 +14,7 @@
 ### Require the package
 
 ```bash
+$ composer require php-http/guzzle6-adapter ^2.0
 $ composer require juliosibaja/payum-monetico-bundle
 ```
 
